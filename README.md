@@ -13,3 +13,5 @@ This directory contains R scripts to make figures and tables in the paper.
 ### figureData
 
 This directory contains data summarized from analyses as documented in the analysisCodes directory. These data were used to generate figures and tables. Two large files could not be hosted on github.com. However, the script (runNetwork.R) to generate them and the necessary input files are provided.
+
+The figures and tables can be reproduced by running the Makefile contained in the figureCodes directory.
