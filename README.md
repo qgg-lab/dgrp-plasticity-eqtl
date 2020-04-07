@@ -4,7 +4,7 @@ This repository contains various codes and data (summary level data for figures 
 
 ### analysisCodes
 
-This directory contains scripts (bash, R, perl) used to perform the analysese. The analyses were performed in the order based on six bash scripts whose file names start with numbers (e.g. 1rnaSeq.bash, ... etc.). These bash scripts call other scripts that are also stored in this directory.
+This directory contains scripts (bash, R, perl) used to perform the analysese. The analyses were performed in the order based on six bash scripts whose file names start with numbers (e.g. 1rnaSeq.bash, ... etc.). These bash scripts call other scripts that are also stored in this directory or open source softwares whose version and command line option information is contained in the script.
 
 ### figureCodes
 
