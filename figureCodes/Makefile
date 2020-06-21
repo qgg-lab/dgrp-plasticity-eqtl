@@ -2,7 +2,7 @@
 # = make file for generating tables and figures =
 # ===============================================
 
-all: report/Table_MappingSummary.xlsx report/Figure_RNASeqExpressionScatterPlot.pdf report/Figure_PreliminaryNormalizationOutlier.pdf report/Figure_PCA.pdf report/Figure_Decanalization.pdf report/Figure_NoWolbaDecanalization.pdf report/Table_VarComp.xlsx report/Table_DecanGSEA.xlsx report/Figure_GxEHist.pdf report/Figure_DecanGSEAExample.pdf reportData/female.wgcna.RData reportData/male.wgcna.RData report/Figure_Network.pdf reportData/female.module1.go.RData report/Figure_CorrDiff.pdf report/Table_GEIGSEA.xlsx report/Table_eqtl.xlsx report/Figure_eQTLsummary.pdf report/Table_female.module1.go.xlsx report/Table_NetRep.xlsx report/Figure_Connectivity.pdf
+all: report/Table_MappingSummary.xlsx report/Figure_RNASeqExpressionScatterPlot.pdf report/Figure_PreliminaryNormalizationOutlier.pdf report/Figure_PCA.pdf report/Figure_Decanalization.pdf report/Figure_NoWolbaDecanalization.pdf report/Table_VarComp.xlsx report/Table_DecanGSEA.xlsx report/Figure_GxEHist.pdf report/Figure_DecanGSEAExample.pdf reportData/female.wgcna.RData reportData/male.wgcna.RData report/Figure_Network.pdf reportData/female.module1.go.RData report/Figure_CorrDiff.pdf report/Table_GEIGSEA.xlsx report/Table_eqtl.xlsx report/Figure_eQTLsummary.pdf report/Table_female.module1.go.xlsx report/Table_NetRep.xlsx report/Table_GeneComparison.xlsx report/Figure_Connectivity.pdf
 	
 FONT="Myriad Pro"
 
@@ -38,7 +38,7 @@ report/Figure_PCA.pdf: reportCode/figurePCA.R reportData/female.pca.RData report
 # ============================================================
 
 report/Figure_Decanalization.pdf report/Figure_NoWolbaDecanalization.pdf: reportCode/figureDecanalization.R reportData/female.adj.qgSingleTemp.RData reportData/male.adj.qgSingleTemp.RData reportData/female.adj.qgVarHet.RData reportData/male.adj.qgVarHet.RData reportData/gene.info
-	Rscript reportCode/figureDecanalization.R reportData/female.adj.qgSingleTemp.RData reportData/male.adj.qgSingleTemp.RData reportData/female.adj.qgVarHet.RData reportData/male.adj.qgVarHet.RData reportData/gene.info report/Figure_Decanalization.pdf report/Figure_NoWolbaDecanalization.pdf $(FONT)
+	Rscript reportCode/figureDecanalizationR1.R reportData/female.adj.qgSingleTemp.RData reportData/male.adj.qgSingleTemp.RData reportData/female.adj.qgVarHet.RData reportData/male.adj.qgVarHet.RData reportData/gene.info report/Figure_Decanalization.pdf report/Figure_NoWolbaDecanalization.pdf $(FONT)
 	cp report/Figure_Decanalization.pdf paper/figures/Figure2.pdf
 	cp report/Figure_NoWolbaDecanalization.pdf paper/figures/FigureS4.pdf
 
@@ -127,3 +127,10 @@ report/Table_NetRep.xlsx: reportCode/tableNetRep.R reportData/female.wgcna.RData
 report/Figure_Connectivity.pdf: reportCode/figureConnectivity.R reportData/female.wgcna.RData reportData/male.wgcna.RData reportData/sigma2.RData
 	Rscript reportCode/figureConnectivity.R reportData/female.wgcna.RData reportData/male.wgcna.RData reportData/sigma2.RData report/Figure_Connectivity.pdf $(FONT)
 	cp report/Figure_Connectivity.pdf paper/figures/Figure6.pdf
+
+# gene comparison
+# ============================================================
+
+report/Table_GeneComparison.xlsx: reportCode/tableComparison.R reportData/cg.fbgn.txt reportData/female.adj.qgGxE.RData reportData/male.adj.qgGxE.RData reportData/gene.info reportData/Hutter2008CGs.txt reportData/Levine2011CGs.txt reportData/Zhao2015dmel21cFBgns.txt reportData/Zhao2015dmel29cFBgns.txt
+	Rscript reportCode/tableComparison.R reportData/cg.fbgn.txt reportData/female.adj.qgGxE.RData reportData/male.adj.qgGxE.RData reportData/gene.info reportData/Hutter2008CGs.txt reportData/Levine2011CGs.txt reportData/Zhao2015dmel21cFBgns.txt reportData/Zhao2015dmel29cFBgns.txt report/Table_GeneComparison.xlsx
+	

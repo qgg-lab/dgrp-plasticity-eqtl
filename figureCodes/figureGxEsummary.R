@@ -26,8 +26,69 @@ exp2.gene <- args[7]
 # ============================================================
 
 file.width = 89
-cairo_pdf(file = args[8], width = file.width/25.4, height = file.width/25.4, family = args[9])
-par(las = 1, tcl = -0.2, mar = c(1.6, 2.2, 1, 0.5), mfrow = c(2, 2), xpd = TRUE, ps = 7, lwd = 0.5)
+cairo_pdf(file = args[8], width = file.width/25.4, height = 1.3*file.width/25.4, family = args[9])
+
+layout(matrix(c(1, 2, 2, 3, 4, 4, 5, 5, 6, 6, 7, 7), byrow = T, ncol = 4, nrow = 3), widths = c(0.2, 0.1, 0.1, 0.2), heights = c(0.3, 0.5, 0.5))
+
+par(las = 1, tcl = -0.2, mar = c(1.8, 1.5, 1, 0.5), xpd = TRUE, ps = 7, lwd = 0.5)
+
+plot(c(0.5, 2.5), c(0.5, 2.5), type = "n", axes = FALSE)
+
+segments(c(1, 1), c(1, 2), c(2, 2), c(2, 1), col = col.pal[1:2])
+points(c(1, 2, 1, 2), c(1, 2, 2, 1), pch = 16, cex = 1, col = rep(col.pal[1:2], each = 2))
+axis(side = 1, at = c(1, 2), labels = c("A", "B"), lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
+title(xlab = "Environment", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+box(bty = "l")
+title(ylab = "Genetic value", mgp = c(0.4, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+segments(c(0.8, 0.8, 0.8), c(1, 2, 1), c(0.9, 0.9, 0.8), c(1, 2, 2))
+text(0.6, 1.5, expression(paste(italic(sigma^2)[A])), cex = 7/par("ps")/par("cex"))
+
+segments(c(2.1, 2.1, 2.2), c(1, 2, 1), c(2.2, 2.2, 2.2), c(1, 2, 2))
+text(2.4, 1.5, expression(paste(italic(sigma^2)[B])), cex = 7/par("ps")/par("cex"))
+
+text(0.5, 2.3, "genotype b", pos = 4, col = col.pal[2], cex = 7/par("ps")/par("cex"))
+text(0.5, 0.7, "genotype a", pos = 4, col = col.pal[1], cex = 7/par("ps")/par("cex"))
+
+text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("a")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+
+
+
+plot(c(0.5, 2.5), c(0.5, 2.5), type = "n", axes = FALSE)
+
+segments(c(1, 1), c(1.4, 1.6), c(2, 2), c(2, 1), col = col.pal[1:2])
+points(c(1, 2, 1, 2), c(1.4, 2, 1.6, 1), pch = 16, cex = 1, col = rep(col.pal[1:2], each = 2))
+axis(side = 1, at = c(1, 2), labels = c("A", "B"), lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
+title(xlab = "Environment", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+box(bty = "l")
+title(ylab = "Genetic value", mgp = c(0.4, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+segments(c(0.8, 0.8, 0.8), c(1.4, 1.6, 1.4), c(0.9, 0.9, 0.8), c(1.4, 1.6, 1.6))
+text(0.6, 1.5, expression(paste(italic(sigma^2)[A])), cex = 7/par("ps")/par("cex"))
+
+segments(c(2.1, 2.1, 2.2), c(1, 2, 1), c(2.2, 2.2, 2.2), c(1, 2, 2))
+text(2.4, 1.5, expression(paste(italic(sigma^2)[B])), cex = 7/par("ps")/par("cex"))
+
+text(0.5, 2, "genotype b", pos = 4, col = col.pal[2], cex = 7/par("ps")/par("cex"))
+text(0.5, 1, "genotype a", pos = 4, col = col.pal[1], cex = 7/par("ps")/par("cex"))
+
+text(grconvertX(0.05 + file.width/25.4/3, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("b")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+
+
+plot(c(0.5, 2.5), c(0.5, 2.5), type = "n", axes = FALSE)
+
+segments(c(1, 1), c(1.4, 2), c(2, 2), c(1.6, 1), col = col.pal[3:4])
+points(c(1, 2, 1, 2), c(1.4, 1.6, 2, 1), pch = 16, cex = 1, col = rep(col.pal[1:2], 2))
+axis(side = 1, at = c(1, 2), labels = c("a", "b"), lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
+title(xlab = "Genotype", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+box(bty = "l")
+title(ylab = "Genetic value", mgp = c(0.4, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+
+text(1, 2, "environment B", pos = 4, col = col.pal[4], cex = 7/par("ps")/par("cex"))
+text(0.3, 1, "environment A", pos = 4, col = col.pal[3], cex = 7/par("ps")/par("cex"))
+
+text(grconvertX(0.05 + file.width/25.4*2/3, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("c")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+
+
+par(las = 1, tcl = -0.2, mar = c(1.6, 2.5, 1, 0.5), xpd = TRUE, ps = 7, lwd = 0.5)
 
 # plot female 1st expression
 # ============================================================
@@ -36,20 +97,22 @@ par(las = 1, tcl = -0.2, mar = c(1.6, 2.2, 1, 0.5), mfrow = c(2, 2), xpd = TRUE,
 plot(c(1, 2), range(c(blup.25c[exp1.index, ], blup.18c[exp1.index, ])), xlim = c(0.8, 2.2), type = "n", xlab = "", ylab = "", axes = FALSE)
 
 for (i in 1:ncol(blup.25c)) {
-  
+
   points(c(1, 2), c(blup.25c[exp1.index, i], blup.18c[exp1.index, i]), type = "b", lwd = 0.5, col = col.pal[i %% 8 + 1], cex = 0.5, pch = 16)
-  
+
 }
 
 axis(side = 1, at = c(1, 2), labels = c(expression(paste("25 ", {}*degree, "C")), expression(paste("18 ", {}*degree, "C"))), lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
 axis(side = 2, mgp = c(0.8, 0.3, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 
-title(ylab = parse(text = paste("paste(italic(", exp1.gene, "),", "\" expression (BLUP log\"[2], \" scale)\")")), mgp = c(1, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+#title(ylab = parse(text = paste("paste(italic(", exp1.gene, "),", "\" expression (BLUP log\"[2], \" scale)\")")), mgp = c(1, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+title(ylab = parse(text = paste("paste(italic(", exp1.gene, "),", "\" expression (BLUP)\")")), mgp = c(1.4, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+
 box(bty = "l")
 
-text(1.5, grconvertY(0.9, from = "nfc", to = "user"), paste("GEI = ", formatC(gxe[exp1.index, 1]/(gxe[exp1.index, 1] + gxe[exp1.index, 2]), format = "f", digits = 2), sep = ""), cex = 7/par("ps")/par("cex"))
+text(1.5, grconvertY(0.9, from = "nfc", to = "user"), paste("GxE = ", formatC(gxe[exp1.index, 1]/(gxe[exp1.index, 1] + gxe[exp1.index, 2]), format = "f", digits = 2), sep = ""), cex = 7/par("ps")/par("cex"))
 # text(1, 5.4, "\u2640", cex = 20/par("ps")/par("cex"), col = brewer.pal(9, "Reds")[9], pos = 1)
-text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("a")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("d")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
 
 # plot female CG14309 expression
 # ============================================================
@@ -57,22 +120,24 @@ text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc",
 plot(c(1, 2), range(c(blup.25c[exp2.index, ], blup.18c[exp2.index, ])), xlim = c(0.8, 2.2), type = "n", xlab = "", ylab = "", axes = FALSE)
 
 for (i in 1:ncol(blup.25c)) {
-  
+
   points(c(1, 2), c(blup.25c[exp2.index, i], blup.18c[exp2.index, i]), type = "b", lwd = 0.5, col = col.pal[i %% 8 + 1], cex = 0.5, pch = 16)
-  
+
 }
 
 axis(side = 1, at = c(1, 2), labels = c(expression(paste("25 ", {}*degree, "C")), expression(paste("18 ", {}*degree, "C"))), lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
 axis(side = 2, mgp = c(0.8, 0.3, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 
-title(ylab = parse(text = paste("paste(italic(", exp2.gene, "),", "\" expression (BLUP log\"[2], \" scale)\")")), mgp = c(1, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+#title(ylab = parse(text = paste("paste(italic(", exp2.gene, "),", "\" expression (BLUP log\"[2], \" scale)\")")), mgp = c(1, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+title(ylab = parse(text = paste("paste(italic(", exp2.gene, "),", "\" expression (BLUP)\")")), mgp = c(1.4, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+
 box(bty = "l")
 
 #axis.break(axis = 2, breakpos = 11.09, style = "zigzag")
 
-text(1.5, grconvertY(0.9, from = "nfc", to = "user"), paste("GEI = ", formatC(gxe[exp2.index, 1]/(gxe[exp2.index, 1] + gxe[exp2.index, 2]), format = "f", digits = 2), sep = ""), cex = 7/par("ps")/par("cex"))
+text(1.5, grconvertY(0.9, from = "nfc", to = "user"), paste("GxE = ", formatC(gxe[exp2.index, 1]/(gxe[exp2.index, 1] + gxe[exp2.index, 2]), format = "f", digits = 2), sep = ""), cex = 7/par("ps")/par("cex"))
 # text(2, 10.7, "\u2642", cex = 20/par("ps")/par("cex"), col = brewer.pal(9, "Blues")[9], pos = 1)
-text(grconvertX(0.05 + file.width/25.4/2, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("b")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+text(grconvertX(0.05 + file.width/25.4/2, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("e")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
 
 
 # prepare data to plot
@@ -103,16 +168,16 @@ female.hist.plot$counts[1] <- ifelse(female.hist.plot$counts[1] > 1000, female.h
 plot(female.hist.plot, col = "grey80", axes = FALSE, xlab = "", ylab = "", main = "", ylim = c(0, 1000))
 hist(female.gei[female.int.fdr < 0.05], breaks = seq(0, 1, 0.05), col = brewer.pal(9, "Reds")[9], add = TRUE)
 axis(side = 1, at = seq(0, 1, 0.2), mgp = c(0.8, -0.1, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
-title(xlab = "GEI", mgp = c(0.7, 0, 0), cex.lab = 7/par("ps")/par("cex"))
-title(ylab = "Number of genes", mgp = c(1.3, 0, 0), cex.lab = 7/par("ps")/par("cex"))
+title(xlab = "GxE", mgp = c(0.7, 0, 0), cex.lab = 7/par("ps")/par("cex"))
+title(ylab = "Number of genes", mgp = c(1.6, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 legend("topright", pch = 22, pt.bg = c(brewer.pal(9, "Reds")[9]),
-       legend = c("FDR (GEI > 0) = 0.05"), bty = "n",
+       legend = c("FDR (GxE > 0) = 0.05"), bty = "n",
        x.intersp = 0.5, y.intersp = 0.6, cex = 7/par("ps")/par("cex"))
 box(bty = "l", lwd = 0.5)
 axis(side = 2, mgp = c(2, 0.3, 0), seq(0, 1000, 200), labels = c(seq(0, 600, 200), 1600, 1800), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 axis.break(axis = 2, breakpos = 700, style = "zigzag")
 text(0.7, 400, "\u2640", cex = 20/par("ps")/par("cex"), col = brewer.pal(9, "Reds")[9], pos = 4, family = "Arial")
-text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("c")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+text(grconvertX(0.05, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("f")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
 
 # male histogram
 # ============================================================
@@ -122,17 +187,17 @@ male.hist.plot$counts[1] <- ifelse(male.hist.plot$counts[1] > 1000, male.hist.pl
 plot(male.hist.plot, col = "grey80", axes = FALSE, xlab = "", ylab = "", main = "", ylim = c(0, 1000))
 hist(male.gei[male.int.fdr < 0.05], breaks = seq(0, 1, 0.05), col = brewer.pal(9, "Blues")[9], add = TRUE)
 axis(side = 1, at = seq(0, 1, 0.2), mgp = c(0.8, -0.1, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
-title(xlab = "GEI", mgp = c(0.7, 0, 0), cex.lab = 7/par("ps")/par("cex"))
-title(ylab = "Number of genes", mgp = c(1.3, 0, 0), cex.lab = 7/par("ps")/par("cex"))
+title(xlab = "GxE", mgp = c(0.7, 0, 0), cex.lab = 7/par("ps")/par("cex"))
+title(ylab = "Number of genes", mgp = c(1.6, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 
 legend("topright", pch = 22, pt.bg = c(brewer.pal(9, "Blues")[9]),
-       legend = c("FDR (GEI > 0) = 0.05"), bty = "n",
+       legend = c("FDR (GxE > 0) = 0.05"), bty = "n",
        x.intersp = 0.5, y.intersp = 0.6, cex = 7/par("ps")/par("cex"))
 box(bty = "l", lwd = 0.5)
 axis(side = 2, mgp = c(2, 0.3, 0), seq(0, 1000, 200), labels = c(seq(0, 600, 200), 1800, 2000), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 axis.break(axis = 2, breakpos = 700, style = "zigzag")
 
 text(0.7, 400, "\u2642", cex = 20/par("ps")/par("cex"), col = brewer.pal(9, "Blues")[9], pos = 4, family = "Arial")
-text(grconvertX(0.05 + file.width/25.4/2, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("d")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
+text(grconvertX(0.05 + file.width/25.4/2, from = "inches", to = "user"), grconvertY(1, from = "nfc", to = "user"), expression(bold("g")), cex = 9/par("ps")/par("cex"), pos = 1, xpd = TRUE)
 
 dev.off()
