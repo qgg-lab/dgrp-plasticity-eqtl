@@ -294,7 +294,7 @@ plot(female.gxe[female.eqtl.gene, 6]/(female.gxe[female.eqtl.gene, 6] + female.g
 axis(side = 1, lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
 axis(side = 2, mgp = c(0.8, 0.3, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 
-title(xlab = "GEI", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+title(xlab = "GxE", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 title(ylab = "Prediction correlation", mgp = c(1.35, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 box(bty = "l")
 
@@ -319,7 +319,7 @@ plot(male.gxe[male.eqtl.gene, 6]/(male.gxe[male.eqtl.gene, 6] + male.gxe[male.eq
 axis(side = 1, lwd = 0.5, mgp = c(0.8, 0, 0), cex.axis = 7/par("ps")/par("cex"))
 axis(side = 2, mgp = c(0.8, 0.3, 0), lwd = 0.5, cex.axis = 7/par("ps")/par("cex"))
 
-title(xlab = "GEI", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
+title(xlab = "GxE", mgp = c(0.8, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 title(ylab = "Prediction correlation", mgp = c(1.35, 0.3, 0), cex.lab = 7/par("ps")/par("cex"))
 box(bty = "l")
 
